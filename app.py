@@ -9,7 +9,7 @@ pg_eda_estadisc = st.Page('seccion_eda/estadisticos_basicos.py', title = 'Inform
 navigation_env = st.navigation(
     {
         '': [pg_intro],
-        'EDA': [pg_eda_intro, pg_eda_intro]
+        'EDA': [pg_eda_intro, pg_eda_estadisc]
     }
 )
 navigation_env.run()
