@@ -32,19 +32,19 @@ st.markdown('## Distribución de las variables')
 # No funciona pues tenemos que cargar los datos en columnas
 cols = st.columns(1)
 with cols[0]:
-    fig, ax= plt.subplots()       # fig, ax= plt.figure(figsize=(8,5)) 
+    fig, ax= plt.subplots()       # si ponemos fig, ax= plt.figure(figsize=(8,5)) 
     sns.histplot(df['temp'], kde=True)       # una sola figura
     plt.title('Distribución Temp.')
     st.pyplot(fig)                # Pyplot se encarga de cargar la figura
 
 with cols[1]:
-    fig, ax= plt.figure(figsize=(8,5))       # figura del histograma
+    fig, ax= plt.subplots()       # figura del histograma
     sns.histplot(df['temp'], kde=True)
     plt.title('Distribución Humedad.')
     st.pyplot(fig)             # Pyplot se encarga de cargar la figura
 
 with cols[2]:
-    fig, ax= plt.figure(figsize=(8,5))       # figura del histograma
+    fig, ax= plt.subplots()       # figura del histograma
     sns.histplot(df['temp'], kde=True)
     plt.title('Distribución velocidad del viento.')
     st.pyplot(fig)             # Pyplot se encarga de cargar la figura
