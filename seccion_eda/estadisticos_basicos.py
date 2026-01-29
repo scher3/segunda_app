@@ -39,14 +39,23 @@ with cols[0]:
 
 with cols[1]:
     fig, ax= plt.subplots()       # figura del histograma
-    sns.histplot(df['temp'], kde=True)
+    sns.histplot(df['hum'], kde=True)
     plt.title('Distribución Humedad.')
     st.pyplot(fig)             # Pyplot se encarga de cargar la figura
 
 with cols[2]:
     fig, ax= plt.subplots()       # figura del histograma
-    sns.histplot(df['temp'], kde=True)
+    sns.histplot(df['windspeed'], kde=True)
     plt.title('Distribución velocidad del viento.')
+    st.pyplot(fig)             # Pyplot se encarga de cargar la figura
+
+st.markdown('---')
+# Vamos a hacer una unica columna
+cols_target, = st.columns(1)
+with cols_target:
+    fig, ax= plt.subplots()       # figura del histograma
+    sns.histplot(df['cnt'], kde=True)
+    plt.title('Distribución de ventas.')
     st.pyplot(fig)             # Pyplot se encarga de cargar la figura
 
 
