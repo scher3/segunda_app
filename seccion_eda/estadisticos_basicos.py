@@ -30,7 +30,7 @@ st.dataframe(df[['dteday','temp','windspeed','hum','cnt']].describe().T[['count'
 st.markdown('## Distribución de las variables')
 
 # No funciona pues tenemos que cargar los datos en columnas
-cols = st.columns(1)
+cols = st.columns(3)
 with cols[0]:
     fig, ax= plt.subplots()       # si ponemos fig, ax= plt.figure(figsize=(8,5)) 
     sns.histplot(df['temp'], kde=True)       # una sola figura
@@ -58,5 +58,28 @@ with cols_target:
     plt.title('Distribución de ventas.')
     st.pyplot(fig)             # Pyplot se encarga de cargar la figura
 
-
+# a veces no tiene sentido calcular la correlacion de todas las columnas
+# solo la queremos de las columnas numericas.
 st.markdown('## Matriz de correlación')
+# anhadimos las columnas numericas
+cols_interes = ['temp', 'hum', 'windspeed','casual', 'cnt']
+# st.markdown(df[cols_interes].corr())   # como string
+st.dataframe(df[cols_interes].corr())                 # como panda trabaja con dataframe todo lo que trabaja lo es
+
+# Conclusiones: hay dos correlaciones fuerte directas, y dos inversas
+# Si tuvieramos una matriz más grande, realizamos un mapa de calor
+matriz_correlacion = df[cols_interes].corr()
+
+col, = st.columns(1)
+with col:
+    fig, ax = plt.subplots()
+    sns.heatmap(matriz_correlacion, annot=True)
+    plt.title('Matriz correlacion con cnt')
+    st.pyplot(fig)
+
+# Hay casos en los que cuesta hacer una diferenciacion entre colores
+# Por tanto preferimos poner en cada heatmap anotaciones annot=True
+
+
+# Nos haria falta una sesión de entrenamiento y una sesion de demo,
+# con esto podriamos formas un proyecto
